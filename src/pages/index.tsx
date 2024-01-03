@@ -1,22 +1,34 @@
-import Porta from "../components/Porta";
-import Presente from "../components/Presente";
-import { atualizarPortas, criarPortas } from "../functions/portas";
-import PortaModel from "../model/porta"
 import { useState } from "react";
+import Card from "../components/Card";
+import EntradaNumerica from "../components/EntradaNumerica";
+import styles from "../styles/Formulario.module.css"
+import Link from "next/link";
 
-export default function Home() {
-  const [portas, setPortas] = useState(criarPortas(3, 2))
 
-  function renderizarPortas() {
-    return portas.map(porta => {
-      return (
-        <Porta key={porta.numero} value={porta} onChange={novaPorta => setPortas(atualizarPortas(portas, novaPorta))}></Porta>
-      )
-    })
-  }
+export default function Formulario() {
+  const [qtdePortas, setQtdePortas] = useState(3)
+  const [comPresente, setComPresente] = useState(1)
+
   return (
-    <div style={{display: "flex"}}>
-      {renderizarPortas()}
+    <div className={styles.formulario}>
+      <div>
+        <Card bgcolor="#c0392c">
+          <h1>Monty Hall</h1>
+        </Card>
+        <Card>
+          <EntradaNumerica text="Qtde Portas?" value={qtdePortas} onChange={novaQtde => setQtdePortas(novaQtde)}></EntradaNumerica>
+        </Card>
+      </div>
+      <div>
+        <Card>
+          <EntradaNumerica text="Porta com Presente?" value={comPresente} onChange={novaPortaComPresente => setComPresente(novaPortaComPresente)}></EntradaNumerica>
+        </Card>
+        <Card bgcolor="#28a085">
+          <Link href={`/jogo/${qtdePortas}/${comPresente}`} className={styles.link}>
+            <h2>Iniciar</h2>
+            </Link>
+        </Card>
+      </div>
     </div>
   )
 }
