@@ -13,6 +13,10 @@
 
 > Projeto realizado para colocar em prática os meus conhecimentos em Next.js, simulando o problema de Monty Hall.
 
+## 📍 Deploy
+
+Link do projeto: https://porta-premiada-livid.vercel.app/
+
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
